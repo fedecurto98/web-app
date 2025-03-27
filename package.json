@@ -1,20 +1,15 @@
 {
   "name": "web-app",
   "version": "1.0.0",
-  "description": "Repositorio a utilizar en curso DevOps UTN",
-  "main": "index.js",
+  "description": "Proyecto para DevOps UTN - Aplicación web que conecta con base de datos",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fedecurto98/web-app.git"
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.3"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fedecurto98/web-app/issues"
-  },
-  "homepage": "https://github.com/fedecurto98/web-app#readme"
+  "author": "Tu Nombre",
+  "license": "ISC"
 }
