@@ -1,17 +1,20 @@
 # Usa la imagen oficial de Node.js como base
 FROM node:16
 
-# Crea el directorio donde estará tu app dentro del contenedor
+# Instala Git
+RUN apt-get update && apt-get install -y git
+
+# Crea un directorio para el proyecto y establece el directorio de trabajo
 WORKDIR /usr/src/app
 
-# Copia los archivos de tu aplicación al contenedor
-COPY . .
+# Clona el repositorio
+RUN git clone https://github.com/fedecurto98/web-app.git .
 
-# Si tienes un archivo package.json y necesitas instalar dependencias de npm (por ejemplo express)
+# Instala las dependencias de la aplicación
 RUN npm install
 
-# Expón el puerto 8080, que es el puerto en el que escuchará tu servidor web
+# Expón el puerto 8080
 EXPOSE 8080
 
-# Comando para iniciar el servidor cuando el contenedor se levante
+# Ejecuta la aplicación
 CMD ["node", "app.js"]
