@@ -21,7 +21,7 @@ dbConnection.connect((err) => {
 
 
 app.get('/get-data', (req, res) => {
-  connection.query('SELECT * FROM contactos', (err, results) => {
+  dbConnection.query('SELECT * FROM contactos', (err, results) => {
     if (err) {
       return res.status(500).json({ error: 'Error al obtener los datos' });
     }
