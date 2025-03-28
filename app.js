@@ -5,7 +5,7 @@ const port = 8080;
 
 // Configuración de la conexión a la base de datos
 const dbConnection = mysql.createConnection({
-  host: 'mysql-db',  // 'db' es el nombre del servicio de la base de datos en docker-compose
+  host: 'db',  // 'db' es el nombre del servicio de la base de datos en docker-compose
   user: 'myuser',
   password: 'mypassword',
   database: 'mydatabase',
