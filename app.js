@@ -20,18 +20,25 @@ dbConnection.connect((err) => {
 });
 
 app.get('/', (req, res) => {
-  res.send("Respuesta desde WebApp");
+  res.send("WebApp Devops curso UTN");
 });
 
 
 app.get('/get-data', (req, res) => {
   dbConnection.query('SELECT * FROM contactos', (err, results) => {
     if (err) {
-      return res.status(500).json({ error: 'Error al obtener los datos' });
+      console.error('Error en la consulta:', err);  
+      return res.status(500).json({
+        error: 'Error al obtener los datos',
+        message: err.message,  
+        code: err.code,        
+        stack: err.stack,     
+      });
     }
-    res.json(results);  // Devuelve los datos obtenidos de la base de datos
+    res.json(results);  
   });
 });
+
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
