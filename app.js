@@ -19,6 +19,10 @@ dbConnection.connect((err) => {
   console.log('connected to the database');
 });
 
+app.get('/', (req, res) => {
+  res.send("Respuesta desde WebApp");
+});
+
 
 app.get('/get-data', (req, res) => {
   dbConnection.query('SELECT * FROM contactos', (err, results) => {
