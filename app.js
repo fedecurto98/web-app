@@ -1,9 +1,8 @@
 const express = require('express');
-const mysql = require('mysql2/promise');  // Versión con promesas
+const mysql = require('mysql2/promise');
 const app = express();
 const port = 8080;
 
-// Configuración del pool de conexiones
 const dbConfig = {
   host: 'db',
   user: 'myuser',
@@ -13,15 +12,42 @@ const dbConfig = {
   connectionLimit: 10,
 };
 
-const pool = mysql.createPool(dbConfig);  // Crear el pool de conexiones
+const pool = mysql.createPool(dbConfig);
 
 app.get('/', (req, res) => {
-  res.send("WebApp Devops curso UTN");
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mi Aplicación Web</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          background-color: #f0f0f0;
+          padding: 20px;
+        }
+        h1 {
+          color: #333;
+        }
+        div {
+          margin-top: 10px;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Mi Aplicación Web</h1>
+      <div>WebApp Devops curso UTN - Home</div>
+    </body>
+    </html>
+  `);
 });
 
 app.get('/get-data', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM contactos');  // Usando el pool
+    const [rows] = await pool.query('SELECT * FROM contactos');
     res.json(rows);
   } catch (err) {
     console.error('Error en la consulta:', err);
