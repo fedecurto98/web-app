@@ -5,10 +5,10 @@ const port = 8080;
 
 // Configuración del pool de conexiones
 const dbConfig = {
-  MYSQL_HOST: 'db',
-  MYSQL_USER: 'myuser',
-  MYSQL_PASSWORD: 'mypassword',
-  MYSQL_DATABASE: 'mydatabase',
+  host: 'db',
+  user: 'myuser',
+  password: 'mypassword',
+  database: 'mydatabase',
   waitForConnections: true,
   connectionLimit: 10,
 };
